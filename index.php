@@ -6,5 +6,6 @@ class Playground {
     }
 }
 
+echo 'Arfa';
 echo Playground::Callname('arfa');
 ?>
