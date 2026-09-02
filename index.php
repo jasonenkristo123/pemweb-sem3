@@ -8,8 +8,3 @@ class Playground {
 
 echo Playground::Callname('arfa');
 ?>
-
-jwadjwad
-awdijawdijiw
-awdjiawjdiawd
-awjiawdj
