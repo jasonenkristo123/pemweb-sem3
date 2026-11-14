@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TensorFlow.js CDN Demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+</head>
+<body>
+  <h2>Prediksi Machine Learning (TensorFlow.js)</h2>
+  <p>Persamaan: y = 2x - 1. Menguji input x = 10...</p>
+  <h3 id="result">Memproses model...</h3>
+
+  <script>
+    async function trainAndPredict() {
+      const model = tf.sequential();
+      model.add(tf.layers.dense({ units: 1, inputShape: [1] }));
+      model.compile({ loss: 'meanSquaredError', optimizer: 'sgd' });
+
+      const xs = tf.tensor2d([-1, 0, 1, 2, 3, 4], [6, 1]);
+      const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1]);
+
+      await model.fit(xs, ys, { epochs: 200 });
+
+      const output = model.predict(tf.tensor2d([10], [1, 1]));
+      const predictedValue = (await output.data())[0];
+
+      document.getElementById('result').innerText = 
+        `Hasil Prediksi untuk x = 10 adalah: ${predictedValue.toFixed(2)}`;
+    }
+
+    trainAndPredict();
+  </script>
+</body>
+</html>

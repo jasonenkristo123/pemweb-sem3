@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Standard Counter</title>
+</head>
+<body>
+  <h2>Counter App (Vanilla JS)</h2>
+  <h1 id="counter-value">0</h1>
+  <button id="btn-increment">Tambah</button>
+
+  <script>
+    let count = 0;
+    const counterDisplay = document.getElementById('counter-value');
+    const incrementBtn = document.getElementById('btn-increment');
+
+    incrementBtn.addEventListener('click', () => {
+      count++;
+      counterDisplay.textContent = count;
+    });
+  </script>
+</body>
+</html>

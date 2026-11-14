@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Demo</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    #box { padding: 15px; background-color: #3b82f6; color: white; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>jQuery Slide Toggle</h2>
+  <button id="toggleBtn">Sembunyikan Panel</button>
+  <div id="box">Ini adalah kotak informasi interaktif berbasis jQuery.</div>
+
+  <script>
+    $(document).ready(function() {
+      $('#toggleBtn').click(function() {
+        $('#box').slideToggle(300, function() {
+          const isVisible = $('#box').is(':visible');
+          $('#toggleBtn').text(isVisible ? 'Sembunyikan Panel' : 'Tampilkan Panel');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

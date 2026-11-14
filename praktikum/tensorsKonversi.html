@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Konversi Satuan Suhu</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background-color: #f8fafc; }
+    .card { background: white; padding: 20px; border-radius: 8px; max-width: 400px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .input-group { margin-bottom: 12px; }
+    label { display: block; margin-bottom: 4px; font-weight: bold; }
+    input, select { width: 100%; padding: 8px; box-sizing: border-box; margin-bottom: 8px; }
+    .result { margin-top: 15px; padding: 10px; background-color: #e2e8f0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Konverter Suhu</h2>
+    <div class="input-group">
+      <label>Nilai Suhu:</label>
+      <input type="number" id="tempInput" value="100" oninput="convertTemperature()">
+    </div>
+    <div class="input-group">
+      <label>Dari:</label>
+      <select id="fromUnit" onchange="convertTemperature()">
+        <option value="C">Celcius (°C)</option>
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="R">Reamur (°R)</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label>Ke:</label>
+      <select id="toUnit" onchange="convertTemperature()">
+        <option value="F">Fahrenheit (°F)</option>
+        <option value="C">Celcius (°C)</option>
+        <option value="R">Reamur (°R)</option>
+      </select>
+    </div>
+    <div class="result">
+      Hasil: <strong id="outputResult">212.00 °F</strong>
+    </div>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      const val = parseFloat(document.getElementById('tempInput').value);
+      const from = document.getElementById('fromUnit').value;
+      const to = document.getElementById('toUnit').value;
+      const resultEl = document.getElementById('outputResult');
+
+      if (isNaN(val)) {
+        resultEl.innerText = "-";
+        return;
+      }
+
+      let celcius;
+      if (from === 'C') celcius = val;
+      else if (from === 'F') celcius = (val - 32) * (5 / 9);
+      else if (from === 'R') celcius = val * (5 / 4);
+
+      let finalVal;
+      if (to === 'C') finalVal = celcius;
+      else if (to === 'F') finalVal = (celcius * (9 / 5)) + 32;
+      else if (to === 'R') finalVal = celcius * (4 / 5);
+
+      resultEl.innerText = `${finalVal.toFixed(2)} °${to}`;
+    }
+  </script>
+</body>
+</html>
