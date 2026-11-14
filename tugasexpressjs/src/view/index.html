@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Todo List</h1>
+
+      <form id="todo-form" class="todo-form">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Tulis tugas baru..."
+          autocomplete="off"
+          required
+        />
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
+      <p id="status-message" class="status-message" hidden></p>
+
+      <ul id="todo-list" class="todo-list"></ul>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
